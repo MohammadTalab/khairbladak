@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306 
--- Generation Time: 12 يونيو 2025 الساعة 22:44
+-- Generation Time: 14 يونيو 2025 الساعة 18:31
 -- إصدار الخادم: 10.4.32-MariaDB
 -- PHP Version: 8.1.25
 
@@ -66,6 +66,19 @@ CREATE TABLE `order` (
 -- --------------------------------------------------------
 
 --
+-- بنية الجدول `order_product`
+--
+
+CREATE TABLE `order_product` (
+  `p_id` int(11) NOT NULL,
+  `o_id` int(11) NOT NULL,
+  `count` int(11) NOT NULL,
+  `price` decimal(10,2) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
 -- بنية الجدول `product`
 --
 
@@ -119,6 +132,12 @@ ALTER TABLE `discount`
 --
 ALTER TABLE `order`
   ADD PRIMARY KEY (`O_id`);
+
+--
+-- Indexes for table `order_product`
+--
+ALTER TABLE `order_product`
+  ADD PRIMARY KEY (`p_id`,`o_id`);
 
 --
 -- Indexes for table `product`
