@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>إتمام الشراء - متجر إلكتروني</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .checkout-container {
+            max-width: 1000px;
+            margin: 50px auto;
+            padding: 30px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .checkout-container h1 {
+            text-align: center;
+            margin-bottom: 30px;
+            color: #333;
+        }
+        
+        .checkout-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+        }
+        
+        @media (max-width: 768px) {
+            .checkout-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        .form-section {
+            margin-bottom: 30px;
+        }
+        
+        .form-section h2 {
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        .form-group {
+            margin-bottom: 15px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        
+        input[type="text"],
+        input[type="email"],
+        input[type="tel"],
+        select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        
+        .order-summary {
+            background-color: #f8f9fa;
+            padding: 20px;
+            border-radius: 5px;
+        }
+        
+        .order-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        .order-item:last-child {
+            border-bottom: none;
+        }
+        
+        .order-total {
+            margin-top: 20px;
+            padding-top: 15px;
+            border-top: 2px solid #ddd;
+            font-weight: bold;
+            display: flex;
+            justify-content: space-between;
+        }
+        
+        .payment-options {
+            margin-top: 20px;
+        }
+        
+        .payment-option {
+            margin-bottom: 10px;
+        }
+        
+        .place-order-btn {
+            display: block;
+            width: 100%;
+            padding: 15px;
+            background-color: #3498db;
+            color: white;
+            text-align: center;
+            text-decoration: none;
+            border: none;
+            border-radius: 5px;
+            margin-top: 20px;
+            font-weight: bold;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        
+        .place-order-btn:hover {
+            background-color: #2980b9;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">متجرنا</div>
+        <nav>
+            <ul>
+                <li><a href="index.html">الرئيسية</a></li>
+                <li><a href="products.html">المنتجات</a></li>
+                <li><a href="about.html">من نحن</a></li>
+                <li><a href="cart.html">السلة</a></li>
+                <li><a href="login.html">تسجيل الدخول</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <main>
+        <div class="checkout-container">
+            <h1>إتمام الشراء</h1>
+            
+            <div class="checkout-grid">
+                <div class="checkout-form">
+                    <form>
+                        <div class="form-section">
+                            <h2>معلومات الشحن</h2>
+                            <div class="form-group">
+                                <label for="name">الاسم الكامل</label>
+                                <input type="text" id="name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="email">البريد الإلكتروني</label>
+                                <input type="email" id="email" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="phone">رقم الهاتف</label>
+                                <input type="tel" id="phone" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="address">العنوان</label>
+                                <input type="text" id="address" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="city">المدينة</label>
+                                <input type="text" id="city" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="postal-code">الرمز البريدي</label>
+                                <input type="text" id="postal-code" required>
+                            </div>
+                        </div>
+                        
+                        <div class="form-section">
+                            <h2>طريقة الدفع</h2>
+                            <div class="payment-options">
+                                <div class="payment-option">
+                                    <input type="radio" id="credit-card" name="payment" checked>
+                                    <label for="credit-card">بطاقة ائتمان</label>
+                                </div>
+                                <div class="payment-option">
+                                    <input type="radio" id="paypal" name="payment">
+                                    <label for="paypal">PayPal</label>
+                                </div>
+                                <div class="payment-option">
+                                    <input type="radio" id="cash" name="payment">
+                                    <label for="cash">الدفع عند الاستلام</label>
+                                </div>
+                            </div>
+                            
+                            <div id="credit-card-details" style="margin-top: 15px;">
+                                <div class="form-group">
+                                    <label for="card-number">رقم البطاقة</label>
+                                    <input type="text" id="card-number" placeholder="XXXX XXXX XXXX XXXX">
+                                </div>
+                                <div class="form-group">
+                                    <label for="card-name">الاسم على البطاقة</label>
+                                    <input type="text" id="card-name">
+                                </div>
+                                <div style="display: flex; gap: 15px;">
+                                    <div class="form-group" style="flex: 1;">
+                                        <label for="expiry">تاريخ الانتهاء</label>
+                                        <input type="text" id="expiry" placeholder="MM/YY">
+                                    </div>
+                                    <div class="form-group" style="flex: 1;">
+                                        <label for="cvv">CVV</label>
+                                        <input type="text" id="cvv" placeholder="XXX">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <button type="submit" class="place-order-btn">تأكيد الطلب</button>
+                    </form>
+                </div>
+                
+                <div>
+                    <div class="order-summary">
+                        <h2>ملخص الطلب</h2>
+                        <div class="order-item">
+                            <span>منتج 1 (1x)</span>
+                            <span>99 ريال</span>
+                        </div>
+                        <div class="order-item">
+                            <span>منتج 2 (2x)</span>
+                            <span>298 ريال</span>
+                        </div>
+                        <div class="order-item">
+                            <span>الشحن</span>
+                            <span>20 ريال</span>
+                        </div>
+                        <div class="order-item">
+                            <span>الضريبة (
